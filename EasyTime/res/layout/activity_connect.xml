@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Mail"
+        android:text="@string/connect_textview1_mail"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Mot de passe"
+        android:text="@string/connect_textview2_mdp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Mot de passe"
+        android:text="@string/connect_textview3_mdp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -69,6 +69,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:text="Ok" />
+        android:text="@string/connect_button1_Ok" />
 
 </LinearLayout>
