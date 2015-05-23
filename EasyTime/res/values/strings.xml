@@ -3,5 +3,6 @@
 
     <string name="app_name">EasyTime</string>
     <string name="hello_world">Hello peter !!!</string>
+    <string name="title_Connect_Activity">Connexion</string>
 
 </resources>
