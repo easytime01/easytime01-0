@@ -97,8 +97,7 @@ public class DataBaseContent {
 	/***************************************************************************/
 	/* 
 	 * Methode : findUserEasyTime                       
-	 * Objet : Recherche d'un nouveau user à l'aide de la clef unique de la 
-	 *         table USER.
+	 * Objet : Recherche les utilisateurs
 	 * Par : Peter HOWSE                                  
 	 * In  : Cuseur (tableau de données)
 	 * Out : Ras                                                          
