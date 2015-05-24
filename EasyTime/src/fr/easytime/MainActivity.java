@@ -22,7 +22,6 @@
 
 package fr.easytime;
 
-//import fr.easytime.database.DataBaseContent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -30,10 +29,10 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.database.Cursor;
+import android.database.Cursor;
 
 //import du projet
-//import fr.easytime.database.DataBaseContent;
+import fr.easytime.database.DataBaseContent;
 
 public class MainActivity extends Activity {
 
@@ -55,12 +54,12 @@ public class MainActivity extends Activity {
         
         final Button loginButton = (Button) findViewById(R.id.button1);
         final TextView TextView1 = (TextView) findViewById(R.id.textView1); 
-        //Cursor UserCurseur = null;
+        Cursor UserCurseur = null;
         
-      //  DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
-      //  EasytimeDataBaseContent.open();	
-      //  UserCurseur = EasytimeDataBaseContent.findUserEasyTime();
-        TextView1.setText("Peter", TextView.BufferType.EDITABLE);
+        DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
+        EasytimeDataBaseContent.open();	
+        UserCurseur = EasytimeDataBaseContent.findUserEasyTime();
+        TextView1.setText(UserCurseur.get, TextView.BufferType.EDITABLE);
                 
         loginButton.setOnClickListener(new OnClickListener() {
 
