@@ -71,4 +71,5 @@
         android:layout_weight="1"
         android:text="@string/connect_button1_Ok" />
 
+
 </LinearLayout>

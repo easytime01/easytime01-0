@@ -1,3 +1,4 @@
+
 /******************************************************************************/
 /* 
  * Package fr.easytime.tools                                                  
@@ -62,3 +63,4 @@ public class Check {
      return check;
   } // fin CheckMail
 } // fin Check
+
