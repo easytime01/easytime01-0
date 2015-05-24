@@ -127,3 +127,4 @@ public class DataBaseContent {
 	public void deleteUserEasyTime(long _id) {
 		EasyTimeDB.delete(Table.TABLE_USER, Table.COLUMN_ID + "=" + _id, null);
 	} //deleteUserEasyTime
+}//DataBaseContent
