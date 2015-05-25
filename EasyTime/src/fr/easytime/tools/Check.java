@@ -62,5 +62,32 @@ public class Check {
 		}
      return check;
   } // fin CheckMail
+	
+	/***************************************************************************/
+	/* 
+	 * Methode : CheckMdp                         
+	 * Objet : Control d'une chaine mot de passe.
+	 * Par : Peter HOWSE                                  
+	 * In  : chaine de caractère
+	 * Out : bouléen true -> mail correct 
+	 *              false -> mail incorrect                                                                   
+	 */ 
+	/***************************************************************************/
+
+	public boolean CheckMdp(String mdpsai, String mdpbase) {
+		
+		// Mail présent ?
+		if (mdpsai  == "") {
+			check = false;
+			erreur ="Mot de passe absent.";
+		}
+		if (mdpsai != mdpbase) {
+			check = false;
+			erreur ="Mot de passe incorrecte.";
+		}
+     return check;
+  } // fin CheckMail
+	
+	
 } // fin Check
 

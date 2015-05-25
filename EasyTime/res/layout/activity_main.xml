@@ -8,6 +8,7 @@
     tools:context=".MainActivity" >
      
 <ImageView android:layout_width="fill_parent" 
+    android:contentDescription="@string/none"
 	android:id="@+id/acountcreation_title"
 	android:layout_height="wrap_content"
 	android:src="@drawable/android" 
@@ -29,6 +30,7 @@
  
 <EditText android:id="@+id/acountcreationemail" 
     android:layout_width="200dp"
+    android:inputType="textEmailAddress"
 	android:layout_height="wrap_content" 
 	android:layout_gravity="center"/>
 	 

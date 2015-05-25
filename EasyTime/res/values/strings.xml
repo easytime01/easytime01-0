@@ -10,6 +10,5 @@
     <string name="main_textview_mail">Mail</string>
     <string name="main_button_creercompte">"Créer un compte"</string>
     <string name="main_textview_mdp">Mot de passe</string>
-    
-    
+    <string name="none"> ""</string>
 </resources>
