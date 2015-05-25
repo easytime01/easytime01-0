@@ -29,6 +29,12 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+ 
+
 import android.database.Cursor;
 
 //import du projet
@@ -52,8 +58,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         
-        final Button loginButton = (Button) findViewById(R.id.button1);
-        final TextView TextView1 = (TextView) findViewById(R.id.textView1); 
+        final Button loginButton = (Button) findViewById(R.id.acountcreation_createAcount);
+        final TextView TextView1 = (TextView) findViewById(R.id.acountcreationemail); 
         Cursor UserCurseur = null;
         
         DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
@@ -76,4 +82,41 @@ public class MainActivity extends Activity {
         	}//onClick
         });//OnClickListener
     } //onCreate
+    
+    //Méthode qui se déclenchera lorsque vous appuierez sur le bouton menu du téléphone
+    public boolean onCreateOptionsMenu(Menu menu) {
+ 
+        //Création d'un MenuInflater qui va permettre d'instancier un Menu XML en un objet Menu
+        MenuInflater inflater = getMenuInflater();
+        //Instanciation du menu XML spécifier en un objet Menu
+        inflater.inflate(R.menu.mainmenu, menu);
+ 
+        //Il n'est pas possible de modifier l'icône d'en-tête du sous menu via le fichier XML on le fait donc en JAVA
+    	//menu.getItem(0).getSubMenu().setHeaderIcon(R.drawable.option_white);
+ 
+        return true;
+     }
+ 
+       //Méthode qui se déclenchera au clic sur un item
+      public boolean onOptionsItemSelected(MenuItem item) {
+         //On regarde quel item a été cliqué grâce à son id et on déclenche une action
+         switch (item.getItemId()) {
+            case R.id.option:
+               Toast.makeText(this, "Option", Toast.LENGTH_SHORT).show();
+               return true;
+            case R.id.favoris:
+                Toast.makeText(this, "Favoris", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.stats:
+                Toast.makeText(this, "Stats", Toast.LENGTH_SHORT).show();
+                return true;
+           case R.id.quitter:
+               //Pour fermer l'application il suffit de faire finish()
+               finish();
+               return true;
+         }
+         return false;}
+ 
+
+    
 }//MainActivity
