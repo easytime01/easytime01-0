@@ -69,7 +69,7 @@ public class ConnectActivity extends Activity {
         		DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
         		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString()) == true) {
         			EasytimeDataBaseContent.open();	
-        			EasytimeDataBaseContent.insertUserEasyTime("Peter", "Howse");
+        			EasytimeDataBaseContent.insertUser("Peter", "Howse");
         		}
         		else {
         			Toast.makeText(null, "Merci de saisir un mail !!", Toast.LENGTH_LONG).show();

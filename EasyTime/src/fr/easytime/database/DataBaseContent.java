@@ -118,12 +118,12 @@ public class DataBaseContent extends ContentProvider {
 	 */ 
 	/***************************************************************************/
 	
-	public void insertUserEasyTime(String mail, String mdp) {
+	public void insertUser(String mail, String mdp) {
 		ContentValues contentValue = new ContentValues();
-		contentValue.put(Table.COLUMN_USER_MAIL, mail);
-		contentValue.put(Table.COLUMN_USER_MDP, mdp);
-		EasyTimeDB.insert(Table.TABLE_USER, null, contentValue);
-	} //insertUserEasyTime
+		contentValue.put(TableUser.COLUMN_USER_MAIL, mail);
+		contentValue.put(TableUser.COLUMN_USER_MDP, mdp);
+		EasyTimeDB.insert(TableUser.TABLE_USER, null, contentValue);
+	} //insertUser
 	/***************************************************************************/
 	/* 
 	 * Methode : findUserEasyTime                       
@@ -133,15 +133,15 @@ public class DataBaseContent extends ContentProvider {
 	 * Out : Ras                                                          
 	 */ 
 	/***************************************************************************/	
-	public Cursor findUserEasyTime() {
-		String[] columns = new String[] { Table.COLUMN_USER_ID,Table.COLUMN_USER_MAIL, Table.COLUMN_USER_MDP};
-		Cursor cursor = EasyTimeDB.query(Table.TABLE_USER, columns, null,
+	public Cursor findUser() {
+		String[] columns = new String[] { TableUser.COLUMN_USER_ID,TableUser.COLUMN_USER_MAIL, TableUser.COLUMN_USER_MDP};
+		Cursor cursor = EasyTimeDB.query(TableUser.TABLE_USER, columns, null,
 				null, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
 		}
 		return cursor;
-	} //findUserEasyTime
+	} //findUser
 	
 	/***************************************************************************/
 	/* 
@@ -154,9 +154,9 @@ public class DataBaseContent extends ContentProvider {
 	 */ 
 	/***************************************************************************/
 	
-	public void deleteUserEasyTime(long _id) {
-		EasyTimeDB.delete(Table.TABLE_USER, Table.COLUMN_USER_ID + "=" + _id, null);
-	} //deleteUserEasyTime
+	public void deleteUser(long _id) {
+		EasyTimeDB.delete(TableUser.TABLE_USER, TableUser.COLUMN_USER_ID + "=" + _id, null);
+	} //deleteUser
 
 	/***************************************************************************/
 	/* 
@@ -180,7 +180,7 @@ public class DataBaseContent extends ContentProvider {
 	 * Objet : 
 	 * Par : Peter HOWSE                                  
 	 * In  : Ras
-	 * Out : Context  Environnement de l'appelant.                                                              
+	 * Out : cureur contenant les données                                                             
 	 */ 
 	/***************************************************************************/
 	
@@ -195,7 +195,7 @@ public class DataBaseContent extends ContentProvider {
 	    checkColumns(projection);
 
 	    // Préciser la table
-	    queryBuilder.setTables(Table.TABLE_TASK);
+	    queryBuilder.setTables(TableTask.TABLE_TASK);
 
 	    int uriType = sURIMatcher.match(uri);
 	    switch (uriType) {
@@ -203,7 +203,7 @@ public class DataBaseContent extends ContentProvider {
 	      break;
 	    case TASK_ID:
 	      // ajouter l'ID à la requête d'origine
-	      queryBuilder.appendWhere(Table.COLUMN_TASK_ID + "="
+	      queryBuilder.appendWhere(TableTask.COLUMN_TASK_ID + "="
 	          + uri.getLastPathSegment());
 	      break;
 	    default:
@@ -251,7 +251,7 @@ public class DataBaseContent extends ContentProvider {
 		    long id = 0;
 		    switch (uriType) {
 		    case TASK:
-		      id = sqlDB.insert(Table.TABLE_TASK, null, values);
+		      id = sqlDB.insert(TableTask.TABLE_TASK, null, values);
 		      break;
 		    default:
 		      throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -277,18 +277,18 @@ public class DataBaseContent extends ContentProvider {
 		    int rowsDeleted = 0;
 		    switch (uriType) {
 		    case TASK:
-		      rowsDeleted = sqlDB.delete(Table.TABLE_TASK, selection,
+		      rowsDeleted = sqlDB.delete(TableTask.TABLE_TASK, selection,
 		          selectionArgs);
 		      break;
 		    case TASK_ID:
 		      String id = uri.getLastPathSegment();
 		      if (TextUtils.isEmpty(selection)) {
-		        rowsDeleted = sqlDB.delete(Table.TABLE_TASK,
-		            Table.COLUMN_TASK_ID + "=" + id, 
+		        rowsDeleted = sqlDB.delete(TableTask.TABLE_TASK,
+		            TableTask.COLUMN_TASK_ID + "=" + id, 
 		            null);
 		      } else {
-		        rowsDeleted = sqlDB.delete(Table.TABLE_TASK,
-		            Table.COLUMN_TASK_ID + "=" + id 
+		        rowsDeleted = sqlDB.delete(TableTask.TABLE_TASK,
+		            TableTask.COLUMN_TASK_ID + "=" + id 
 		            + " and " + selection,
 		            selectionArgs);
 		      }
@@ -318,7 +318,7 @@ public class DataBaseContent extends ContentProvider {
 	    int rowsUpdated = 0;
 	    switch (uriType) {
 	    case TASK:
-	      rowsUpdated = sqlDB.update(Table.TABLE_TASK, 
+	      rowsUpdated = sqlDB.update(TableTask.TABLE_TASK, 
 	          values, 
 	          selection,
 	          selectionArgs);
@@ -326,14 +326,14 @@ public class DataBaseContent extends ContentProvider {
 	    case TASK_ID:
 	      String id = uri.getLastPathSegment();
 	      if (TextUtils.isEmpty(selection)) {
-	        rowsUpdated = sqlDB.update(Table.TABLE_TASK, 
+	        rowsUpdated = sqlDB.update(TableTask.TABLE_TASK, 
 	            values,
-	            Table.COLUMN_TASK_ID + "=" + id, 
+	            TableTask.COLUMN_TASK_ID + "=" + id, 
 	            null);
 	      } else {
-	        rowsUpdated = sqlDB.update(Table.TABLE_TASK, 
+	        rowsUpdated = sqlDB.update(TableTask.TABLE_TASK, 
 	            values,
-	            Table.COLUMN_TASK_ID + "=" + id 
+	            TableTask.COLUMN_TASK_ID + "=" + id 
 	            + " and " 
 	            + selection,
 	            selectionArgs);
@@ -357,8 +357,8 @@ public class DataBaseContent extends ContentProvider {
 	/***************************************************************************/
 		
 	private void checkColumns(String[] projection) {
-	    String[] available = { Table.COLUMN_TASK_REF,
-	        Table.COLUMN_TASK_DES, Table.COLUMN_USER_ID};
+	    String[] available = { TableTask.COLUMN_TASK_REF,
+	        TableTask.COLUMN_TASK_DES, TableUser.COLUMN_USER_ID};
 	    if (projection != null) {
 	      HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));
 	      HashSet<String> availableColumns = new HashSet<String>(Arrays.asList(available));

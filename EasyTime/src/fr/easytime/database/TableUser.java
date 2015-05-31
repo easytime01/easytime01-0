@@ -24,7 +24,7 @@ package fr.easytime.database;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class Table {
+public class TableUser {
 
 	// Table de la base de données
 	public static final String TABLE_USER = "USER";
@@ -32,11 +32,6 @@ public class Table {
 	public static final String COLUMN_USER_MAIL = "USEMAIL";
 	public static final String COLUMN_USER_MDP = "USEMDP";
 	
-	public static final String TABLE_TASK = "TASK";
-	public static final String COLUMN_TASK_ID = "_id";
-	public static final String COLUMN_TASK_REF = "TASREF";
-	public static final String COLUMN_TASK_DES = "TASDES";
-
 	// Instruction SQL de création de la base de données
 	private static final String DATABASE_CREATE = "create table " 
 		+ TABLE_USER
@@ -72,7 +67,7 @@ public class Table {
 	
 	public static void onUpgrade(SQLiteDatabase database, int oldVersion,
 				int newVersion) {
-		Log.w(Table.class.getName(), "Mise à jour de la base de la version "
+		Log.w(TableUser.class.getName(), "Mise à jour de la base de la version "
 				+ oldVersion + " à " + newVersion
 				+ ", avec destruction de toutes les données");
 		database.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);

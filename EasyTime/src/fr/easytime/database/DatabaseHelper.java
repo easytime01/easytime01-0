@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase database) {
-		Table.onCreate(database);
+		TableUser.onCreate(database);
 	}
 
 	/***************************************************************************/
@@ -74,6 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion,
 			int newVersion) {
-		Table.onUpgrade(database, oldVersion, newVersion);
+		TableUser.onUpgrade(database, oldVersion, newVersion);
 	}
 }//DatabaseHelper

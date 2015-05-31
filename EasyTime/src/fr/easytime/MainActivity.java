@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         
         DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
         EasytimeDataBaseContent.open();	
-        UserCurseur = EasytimeDataBaseContent.findUserEasyTime();
+        UserCurseur = EasytimeDataBaseContent.findUser();
         TextView1.setText(UserCurseur.getString(1), TextView.BufferType.EDITABLE);
                 
         loginButton.setOnClickListener(new OnClickListener() {
