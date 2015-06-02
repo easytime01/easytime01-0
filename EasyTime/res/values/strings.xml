@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EasyTime</string>
-    <string name="title_Connect_Activity">Connexion</string>
+    <string name="title_Connect_Activity">Création compte</string>
     <string name="connect_textview1_mail">Mail</string>
     <string name="connect_textview2_mdp">Mot de Passe</string>
     <string name="connect_textview3_mdp">Mot de Passe</string>

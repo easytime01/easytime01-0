@@ -55,33 +55,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
                 
-        final Button loginButton = (Button) findViewById(R.id.acountcreation_createAcount);
         final TextView TextView1 = (TextView) findViewById(R.id.acountcreationemail); 
         final Button ConnexionButton = (Button) findViewById(R.id.acountcreation_connect);
               
         Cursor UserCurseur = null;
         
+        
         DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
+      //  EasytimeDataBaseContent.onCreate();//
+        
         EasytimeDataBaseContent.open();	
         UserCurseur = EasytimeDataBaseContent.findUser();
-        TextView1.setText(UserCurseur.getString(1), TextView.BufferType.EDITABLE);
-                
-        loginButton.setOnClickListener(new OnClickListener() {
-
-        	// Function : onClick - événement                          
-        	// Objet : Initialisation de l'activité (écran) gérant la création 
-        	// Par : Peter HOWSE                                  
-        	// In  : view
-        	// Out : Ras  
-
-        	@Override
-        	public void onClick(View v) {
-        		Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
-        		startActivity(intent);
-        	}//onClick
-        });//OnClickListener
+       
         
-        ConnexionButton.setOnClickListener(new OnClickListener() {
+      if (UserCurseur.getCount() == 0) { 
+   	    Intent intent = new Intent(MainActivity.this, CreationCompte.class);
+         startActivity(intent);
+        } else  {
+        	TextView1.setText(UserCurseur.getString(1), TextView.BufferType.EDITABLE);	
+        }
+        
+         ConnexionButton.setOnClickListener(new OnClickListener() {
 
         	// Function : onClick - événement                          
         	// Objet : Vérification des éléments saisies
@@ -91,7 +85,7 @@ public class MainActivity extends Activity {
 
         	@Override
         	public void onClick(View v) {
-        		Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
+        		//Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
           		Check EasyTimeCheckMdp ;
         		EasyTimeCheckMdp = new Check();
   
@@ -101,7 +95,7 @@ public class MainActivity extends Activity {
         		};
         		
         		
-        		startActivity(intent);
+        		//startActivity(intent);
         	}//onClick
         });//OnClickListener
         
