@@ -81,6 +81,6 @@ public class Chiffrement {
 	        }
 	        resultat = hashString.toString();
 	        return hashString.toString();
-	    }
+	    } //encodeMd5 
 
 }
