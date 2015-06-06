@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); 
                 
         final TextView TextView1 = (TextView) findViewById(R.id.acountcreationemail); 
         final Button ConnexionButton = (Button) findViewById(R.id.acountcreation_connect);

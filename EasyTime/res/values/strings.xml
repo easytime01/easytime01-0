@@ -2,13 +2,15 @@
 <resources>
     <string name="app_name">EasyTime</string>
     <string name="title_Connect_Activity">Création compte</string>
-    <string name="connect_textview1_mail">Mail</string>
-    <string name="connect_textview2_mdp">Mot de Passe</string>
-    <string name="connect_textview3_mdp">Mot de Passe</string>
-    <string name="connect_button1_Ok">Créer</string>
+    <string name="creationcompte_textview1_mail">Mail</string>
+    <string name="creationcompte_textview2_mdp">Mot de passe</string>
+    <string name="creationcompte_textview3_mdp">Confirmation mot de passe</string>
+    <string name="creationcompte_button1_Ok">Créer</string>
     <string name="main_button_connexion">Connexion</string>
     <string name="main_textview_mail">Mail</string>
     <string name="main_button_creercompte">"Créer un compte"</string>
     <string name="main_textview_mdp">Mot de passe</string>
     <string name="none"> ""</string>
+    <string name="creationcompte_textview4_message">"La création d\'un compte sécurisé est nécessaire pour assurer la confidentialité des données." </string>
+    <string name="main_textview1_message">"Au boulot !!!" </string>
 </resources>

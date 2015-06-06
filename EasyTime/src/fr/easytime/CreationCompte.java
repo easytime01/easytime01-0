@@ -55,7 +55,7 @@ public class CreationCompte extends Activity {
          // Associer les éléments de la page à des objets 
         final Button loginButton = (Button) findViewById(R.id.button1);
         final EditText editText1 = (EditText) findViewById(R.id.editText1);          
-        
+        final EditText editText2 = (EditText) findViewById(R.id.editText2);   
         // Associer un événement à un bouton 
         loginButton.setOnClickListener(new OnClickListener() {
        	 
@@ -72,7 +72,7 @@ public class CreationCompte extends Activity {
         		DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
         		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString()) == true) {
         			EasytimeDataBaseContent.open();	
-        			EasytimeDataBaseContent.insertUser("Peter", "Howse");
+        			EasytimeDataBaseContent.insertUser(editText1.getText().toString(), editText2.getText().toString());
         		}
         		else {
         			Toast.makeText(null, "Merci de saisir un mail !!", Toast.LENGTH_LONG).show();
