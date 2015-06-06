@@ -38,6 +38,8 @@ import android.text.TextUtils;
 
 import android.net.Uri;
 
+import fr.easytime.tools.Chiffrement;
+
 public class DataBaseContent extends ContentProvider {
 	
 	private static final int TASK = 10; //
@@ -119,9 +121,10 @@ public class DataBaseContent extends ContentProvider {
 	/***************************************************************************/
 	
 	public void insertUser(String mail, String mdp) {
-		ContentValues contentValue = new ContentValues();
+		Chiffrement Md5 = new Chiffrement() ;
+ 		ContentValues contentValue = new ContentValues();
 		contentValue.put(TableUser.COLUMN_USER_MAIL, mail);
-		contentValue.put(TableUser.COLUMN_USER_MDP, mdp);
+		contentValue.put(TableUser.COLUMN_USER_MDP, Md5.encodeMd5(mdp));
 		EasyTimeDB.insert(TableUser.TABLE_USER, null, contentValue);
 	} //insertUser
 	/***************************************************************************/

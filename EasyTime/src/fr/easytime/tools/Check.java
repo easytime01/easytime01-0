@@ -22,6 +22,11 @@
 
 package fr.easytime.tools;
 
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import fr.easytime.tools.Chiffrement;
+
 public class Check {
 	
 	public static boolean check; //Etat du control.
@@ -60,6 +65,13 @@ public class Check {
 			check = false;
 			erreur ="Mail absent.";
 		}
+		
+		// Mail au bon fomat
+		else if (isEmailAdress(mail)) {
+			check = false;
+			erreur ="Mail incorrecte.";
+				
+		}
      return check;
   } // fin CheckMail
 	
@@ -74,19 +86,38 @@ public class Check {
 	 */ 
 	/***************************************************************************/
 
-	public boolean CheckMdp(String mdpsai, String mdpbase) {
-		
-		// Mail présent ?
+	public boolean CheckMdp(String mdpsai, String mdpencode) {
+		Chiffrement Md5 = new Chiffrement() ;
+		// mode passe présent ?
 		if (mdpsai  == "") {
 			check = false;
 			erreur ="Mot de passe absent.";
 		}
-		if (mdpsai != mdpbase) {
+		if (Md5.encodeMd5(mdpsai) != mdpencode) {
 			check = false;
 			erreur ="Mot de passe incorrecte.";
 		}
      return check;
   } // fin CheckMail
+	
+	/***************************************************************************/
+	/* 
+	 * Methode : isEmailAdress                         
+	 * Objet : Control d'une chaine est au format mail.
+	 * Par : Peter HOWSE                                  
+	 * In  : chaine de caractère
+	 * Out : bouléen true -> mail correct 
+	 *              false -> mail incorrect                                                                   
+	 */ 
+	/***************************************************************************/
+	
+	public static boolean isEmailAdress(String email){
+		Pattern p = Pattern.compile(" ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$ ");
+		Matcher m = p.matcher(email.toUpperCase(Locale.getDefault()));
+		return m.matches();
+		}
+	
+	
 	
 	
 } // fin Check
