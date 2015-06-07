@@ -50,7 +50,7 @@ public class Check {
 	/***************************************************************************/
 	/* 
 	 * Methode : CheckMail                         
-	 * Objet : Control d'une chaine mail.
+	 * Objet : Controle d'une chaine mail.
 	 * Par : Peter HOWSE                                  
 	 * In  : chaine de caractère
 	 * Out : bouléen true -> mail correct 
@@ -61,13 +61,13 @@ public class Check {
 	public boolean CheckMail(String mail) {
 		
 		// Mail présent ?
-		if (mail == "") {
+		if (mail.length()==0 ) {
 			check = false;
 			erreur ="Mail absent.";
 		}
 		
 		// Mail au bon fomat
-		else if (isEmailAdress(mail)) {
+		else if (!isEmailAdress(mail)) {
 			check = false;
 			erreur ="Mail incorrecte.";
 				

@@ -28,7 +28,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-	private static final String DATABASE_NAME = "easytimeDB3.db";
+	private static final String DATABASE_NAME = "easytimeDB5.db";
 	private static final int DATABASE_VERSION = 1;
 
 	/***************************************************************************/

@@ -69,8 +69,9 @@ public class CreationCompte extends Activity {
         	public void onClick(View v) {   
         		Check EasyTimeCheckMail ;
         		EasyTimeCheckMail = new Check();
-        		DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
+        		
         		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString()) == true) {
+        			DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
         			EasytimeDataBaseContent.open();	
         			EasytimeDataBaseContent.insertUser(editText1.getText().toString(), editText2.getText().toString());
         		}
