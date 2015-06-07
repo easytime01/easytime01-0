@@ -25,6 +25,7 @@ package fr.easytime;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
 import android.view.View;
@@ -57,9 +58,11 @@ public class MainActivity extends Activity {
                 
         final TextView TextView1 = (TextView) findViewById(R.id.acountcreationemail); 
         final Button ConnexionButton = (Button) findViewById(R.id.acountcreation_connect);
-              
+        final EditText editText1 = (EditText) findViewById(R.id.acountcreationpassword);       
+        
         Cursor UserCurseur = null;
         
+        String mdp = null; 
         
         DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
       //  EasytimeDataBaseContent.onCreate();//
@@ -73,6 +76,7 @@ public class MainActivity extends Activity {
          startActivity(intent);
         } else  {
         	TextView1.setText(UserCurseur.getString(1), TextView.BufferType.EDITABLE);	
+        	mdp = UserCurseur.getString(2);
         }
         
          ConnexionButton.setOnClickListener(new OnClickListener() {
@@ -89,7 +93,7 @@ public class MainActivity extends Activity {
           		Check EasyTimeCheckMdp ;
         		EasyTimeCheckMdp = new Check();
   
-        		if (EasyTimeCheckMdp.CheckMdp("", "") == false) {
+        		if (EasyTimeCheckMdp.CheckValidityMdp(editText1.getText().toString(), "0cc175b9c0f1b6a831c399e269772661") == false) {
                     Toast.makeText(MainActivity.this, "Mot de passe KO !!", Toast.LENGTH_SHORT).show();
                     	
         		};

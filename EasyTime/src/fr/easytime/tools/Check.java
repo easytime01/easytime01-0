@@ -30,7 +30,7 @@ import fr.easytime.tools.Chiffrement;
 public class Check {
 	
 	public static boolean check; //Etat du control.
-	public static String erreur; // message d'erreur suite au controle KO.
+	private String erreur; // message d'erreur suite au controle KO.
 
 	/***************************************************************************/
 	/* 
@@ -44,7 +44,7 @@ public class Check {
 	
 	public Check() {
 		check = true; 
-		erreur = "";
+		setErreur("");
 	}
 	
 	/***************************************************************************/
@@ -63,13 +63,13 @@ public class Check {
 		// Mail présent ?
 		if (mail.length()==0 ) {
 			check = false;
-			erreur ="Mail absent.";
+			setErreur("Mail absent.");
 		}
 		
 		// Mail au bon fomat
 		else if (!isEmailAdress(mail)) {
 			check = false;
-			erreur ="Mail incorrecte.";
+			setErreur("Mail incorrecte.");
 				
 		}
      return check;
@@ -86,16 +86,41 @@ public class Check {
 	 */ 
 	/***************************************************************************/
 
-	public boolean CheckMdp(String mdpsai, String mdpencode) {
+	public boolean CheckValidityMdp(String mdpsai, String mdpencode) {
 		Chiffrement Md5 = new Chiffrement() ;
 		// mode passe présent ?
 		if (mdpsai  == "") {
 			check = false;
-			erreur ="Mot de passe absent.";
+			setErreur("Mot de passe absent.");
 		}
-		if (Md5.encodeMd5(mdpsai) != mdpencode) {
+		if (Md5.encodeMd5(mdpsai).compareTo(mdpencode) !=0) {
 			check = false;
-			erreur ="Mot de passe incorrecte.";
+			setErreur("Mot de passe incorrecte.");
+		}
+     return check;
+  } // fin CheckValidityMdp
+	
+	
+	/***************************************************************************/
+	/* 
+	 * Methode : CheckMdp                         
+	 * Objet : Control d'une chaine mot de passe.
+	 * Par : Peter HOWSE                                  
+	 * In  : chaine de caractère
+	 * Out : bouléen true -> mail correct 
+	 *              false -> mail incorrect                                                                   
+	 */ 
+	/***************************************************************************/
+
+	public boolean CheckMdp(String mdpsai1, String mdpsai2) {
+		 
+		// mode passe présent ?
+		if (mdpsai1.length()==0  || mdpsai2.length()==0  ) {
+			check = false;
+			setErreur("Mot de passe obligatoire.");
+		} else if (mdpsai1.compareTo(mdpsai2)!=0) {
+			check = false;
+			setErreur("Confirmation de mot de passe différente.");
 		}
      return check;
   } // fin CheckMail
@@ -112,10 +137,18 @@ public class Check {
 	/***************************************************************************/
 	
 	public static boolean isEmailAdress(String email){
-		Pattern p = Pattern.compile(" ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$ ");
+		Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$");
 		Matcher m = p.matcher(email.toUpperCase(Locale.getDefault()));
 		return m.matches();
 		}
+
+	public String getErreur() {
+		return erreur;
+	}
+
+	public void setErreur(String erreur) {
+		this.erreur = erreur;
+	}
 	
 	
 	

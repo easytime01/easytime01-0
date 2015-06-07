@@ -56,6 +56,7 @@ public class CreationCompte extends Activity {
         final Button loginButton = (Button) findViewById(R.id.button1);
         final EditText editText1 = (EditText) findViewById(R.id.editText1);          
         final EditText editText2 = (EditText) findViewById(R.id.editText2);   
+        final EditText editText4 = (EditText) findViewById(R.id.editText4); 
         // Associer un événement à un bouton 
         loginButton.setOnClickListener(new OnClickListener() {
        	 
@@ -70,13 +71,14 @@ public class CreationCompte extends Activity {
         		Check EasyTimeCheckMail ;
         		EasyTimeCheckMail = new Check();
         		
-        		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString()) == true) {
-        			DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
-        			EasytimeDataBaseContent.open();	
-        			EasytimeDataBaseContent.insertUser(editText1.getText().toString(), editText2.getText().toString());
+        		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString())
+        			&& EasyTimeCheckMail.CheckMdp(editText2.getText().toString(),editText4.getText().toString())) {
+            			DataBaseContent EasytimeDataBaseContent = new DataBaseContent(v.getContext()) ;
+        	    		EasytimeDataBaseContent.open();	
+        	    		EasytimeDataBaseContent.insertUser(editText1.getText().toString(), editText2.getText().toString());   			
         		}
         		else {
-        			Toast.makeText(null, "Merci de saisir un mail !!", Toast.LENGTH_LONG).show();
+        			Toast.makeText(v.getContext(),    EasyTimeCheckMail.getErreur() , Toast.LENGTH_SHORT).show();
         		}
         	} //onClick
 		}); //OnClickListener
