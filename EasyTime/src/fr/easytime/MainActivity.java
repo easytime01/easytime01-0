@@ -40,7 +40,7 @@ import android.database.Cursor;
 import fr.easytime.database.DataBaseContent;
 import fr.easytime.tools.Check;
 public class MainActivity extends Activity {
-
+	private   String mdp = null; 
 	/***************************************************************************/
 	/* 
 	 * Methode : onCreate                          
@@ -61,12 +61,9 @@ public class MainActivity extends Activity {
         final EditText editText1 = (EditText) findViewById(R.id.acountcreationpassword);       
         
         Cursor UserCurseur = null;
-        
-        String mdp = null; 
-        
+                   
         DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
-      //  EasytimeDataBaseContent.onCreate();//
-        
+           
         EasytimeDataBaseContent.open();	
         UserCurseur = EasytimeDataBaseContent.findUser();
        
@@ -93,7 +90,7 @@ public class MainActivity extends Activity {
           		Check EasyTimeCheckMdp ;
         		EasyTimeCheckMdp = new Check();
   
-        		if (EasyTimeCheckMdp.CheckValidityMdp(editText1.getText().toString(), "0cc175b9c0f1b6a831c399e269772661") == false) {
+        		if (EasyTimeCheckMdp.CheckValidityMdp(editText1.getText().toString(), mdp) == false) {
                     Toast.makeText(MainActivity.this, "Mot de passe KO !!", Toast.LENGTH_SHORT).show();
                     	
         		};
