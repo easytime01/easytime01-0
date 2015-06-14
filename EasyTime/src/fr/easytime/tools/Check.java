@@ -140,18 +140,30 @@ public class Check {
 		Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$");
 		Matcher m = p.matcher(email.toUpperCase(Locale.getDefault()));
 		return m.matches();
-		}
-
+		} //isEmailAdress
+	/***************************************************************************/
+	/* 
+	 * Methode : getErreur                         
+	 * Objet : Renvoi le message d'erreur
+	 * Par : Peter HOWSE                                  
+	 * In  : 
+	 * Out :  chaine contenant l'erreur
+	 */ 
+	/***************************************************************************/
 	public String getErreur() {
 		return erreur;
-	}
-
+	} //getErreur
+	/***************************************************************************/
+	/* 
+	 * Methode : getErreur                         
+	 * Objet : initialise le message d'erreur
+	 * Par : Peter HOWSE                                  
+	 * In  : chaine contenant l'erreur 
+	 * Out : 
+	 */ 
+	/***************************************************************************/
 	public void setErreur(String erreur) {
 		this.erreur = erreur;
-	}
-	
-	
-	
-	
+	} //setErreur
 } // fin Check
 
