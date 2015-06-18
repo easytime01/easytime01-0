@@ -54,7 +54,7 @@ public class CreationCompte extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creationcompte);
          // Associer les éléments de la page à des objets 
-        final Button loginButton = (Button) findViewById(R.id.button1);
+        final Button loginButton = (Button) findViewById(R.id.buttonAjouter);
         final EditText editText1 = (EditText) findViewById(R.id.editText1);          
         final EditText editText2 = (EditText) findViewById(R.id.editText2);   
         final EditText editText4 = (EditText) findViewById(R.id.editText4); 

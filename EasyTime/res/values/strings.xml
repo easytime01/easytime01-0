@@ -8,9 +8,11 @@
     <string name="creationcompte_button1_Ok">Créer</string>
     <string name="main_button_connexion">Connexion</string>
     <string name="main_textview_mail">Mail</string>
-    <string name="main_button_creercompte">"Créer un compte"</string>
     <string name="main_textview_mdp">Mot de passe</string>
-    <string name="none"> ""</string>
     <string name="creationcompte_textview4_message">"La création d\'un compte sécurisé est nécessaire pour assurer la confidentialité des données." </string>
     <string name="main_textview1_message">"Au boulot !!!" </string>
+      <string name="addtask_textviewreference">"Référence"</string>
+    <string name="addtask_textviewdescription">"Description"</string>
+    <string name="addtask_textviewdureemini">"Durée mini"</string>        
+    <string name="addtask_buttonajouter">"Ajouter"</string>     
 </resources>
