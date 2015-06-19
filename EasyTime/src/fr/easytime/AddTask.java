@@ -23,7 +23,6 @@ package fr.easytime;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,12 +32,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.net.Uri;
 
 // import du projet
 import fr.easytime.database.DataBaseContent;
-import fr.easytime.tools.Check;
+import fr.easytime.database.TableTask;
+//import fr.easytime.tools.Check;
 
-public class CreationCompte extends Activity {
+public class AddTask extends Activity {
 
 	/***************************************************************************/
 	/* 
@@ -50,17 +53,20 @@ public class CreationCompte extends Activity {
 	 * Out : Ras                                                            
 	 */ 
 	/***************************************************************************/
-	
+	  Uri todoUri = Uri.parse(DataBaseContent.CONTENT_URI + "/" + 10);
+	  
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creationcompte);
+        setContentView(R.layout.activity_addtask);
          // Associer les éléments de la page à des objets 
-        final Button loginButton = (Button) findViewById(R.id.buttonAjouter);
-        final EditText editText1 = (EditText) findViewById(R.id.editText1);          
-        final EditText editText2 = (EditText) findViewById(R.id.editText2);   
-        final EditText editText4 = (EditText) findViewById(R.id.editText4); 
+        final Button buttonAjouter = (Button) findViewById(R.id.buttonAjouter);
+        final EditText editTextReference = (EditText) findViewById(R.id.editTextMessage);          
+        final EditText editTextDescription = (EditText) findViewById(R.id.editTextDescription);   
+        final EditText editTextDureeMini = (EditText) findViewById(R.id.editTextDureeMini); 
+   
+	   
         // Associer un événement à un bouton 
-        loginButton.setOnClickListener(new OnClickListener() {
+        buttonAjouter.setOnClickListener(new OnClickListener() {
        	 
         	// Function : onClick - événement                          
         	// Objet : Initialisation de l'activité (écran) gérant la création 
@@ -70,18 +76,22 @@ public class CreationCompte extends Activity {
         	
         	@Override
         	public void onClick(View v) {   
-        		Check EasyTimeCheckMail ;
-        		EasyTimeCheckMail = new Check();
+        	//	Check EasyTimeCheckMail ;
+        	//EasyTimeCheckMail = new Check();
+        		String reference = editTextReference.getText().toString();
+        		String description = editTextDescription.getText().toString() ;
+        		String dureemini = editTextDureeMini.getText().toString();
+         		
+      		    ContentValues values = new ContentValues();
+        		values.put(TableTask.COLUMN_TASK_REF, reference);
+        		values.put(TableTask.COLUMN_TASK_DES, description);
+        		values.put(TableTask.COLUMN_TASK_MIN, dureemini);	
+        		values.put(TableTask.COLUMN_TASK_ETAT, "");
+        		DataBaseContent EasytimeDataBaseContent = new DataBaseContent() ;
         		
-        		if (EasyTimeCheckMail.CheckMail(editText1.getText().toString())
-        			&& EasyTimeCheckMail.CheckMdp(editText2.getText().toString(),editText4.getText().toString())) {
-            			DataBaseContent EasytimeDataBaseContent = new DataBaseContent() ;
-        	    		EasytimeDataBaseContent.open(v.getContext());	
-        	    		EasytimeDataBaseContent.insertUser(editText1.getText().toString(), editText2.getText().toString());   			
-        		}
-        		else {
-        			Toast.makeText(v.getContext(),    EasyTimeCheckMail.getErreur() , Toast.LENGTH_SHORT).show();
-        		}
+        		todoUri = getContentResolver().insert(EasytimeDataBaseContent.CONTENT_URI, values);
+        		    
+
         	} //onClick
 		}); //OnClickListener
     } //onCreate
@@ -124,10 +134,10 @@ public class CreationCompte extends Activity {
          //On regarde quel item a été cliqué grâce à son id et on déclenche une action
          switch (item.getItemId()) {
             case R.id.add:
-          	    Intent intent = new Intent(CreationCompte.this, AddTask.class);
-                startActivity(intent);     
+        	    Intent intent = new Intent(AddTask.this, AddTask.class);
+                startActivity(intent);         	
                return true;
-            case R.id.quitter:
+         case R.id.quitter:
                //Pour fermer l'application il suffit de faire finish()
                finish();
                return true;

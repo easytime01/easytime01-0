@@ -62,9 +62,9 @@ public class MainActivity extends Activity {
         
         Cursor UserCurseur = null;
                    
-        DataBaseContent EasytimeDataBaseContent = new DataBaseContent(this.getBaseContext()) ;
+        DataBaseContent EasytimeDataBaseContent = new DataBaseContent() ;
            
-        EasytimeDataBaseContent.open();	
+        EasytimeDataBaseContent.open(this.getBaseContext());	
         UserCurseur = EasytimeDataBaseContent.findUser();
        
         
@@ -141,15 +141,10 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
          //On regarde quel item a été cliqué grâce à son id et on déclenche une action
          switch (item.getItemId()) {
-            case R.id.option:
-               Toast.makeText(this, "Option", Toast.LENGTH_SHORT).show();
+            case R.id.add:
+        	    Intent intent = new Intent(this, AddTask.class);
+                startActivity(intent);     
                return true;
-            case R.id.favoris:
-                Toast.makeText(this, "Favoris", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.stats:
-                Toast.makeText(this, "Stats", Toast.LENGTH_SHORT).show();
-                return true;
            case R.id.quitter:
                //Pour fermer l'application il suffit de faire finish()
                finish();

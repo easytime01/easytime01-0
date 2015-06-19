@@ -4,18 +4,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
  
-<item android:id="@+id/option" 
-      android:title="Options">
- 
-     <menu android:id="@+id/sousmenu">
-	 <item android:id="@+id/favoris"
-	       android:title="Favoris"   />	
- 
-	 <item android:id="@+id/stats"
-	       android:title="Stats"  />
-     </menu>
+<item android:id="@+id/add" 
+      android:title="@string/menu_add">
+  
 </item>
  
 <item android:id="@+id/quitter" 
-      android:title="Quitter" />
+      android:title="@string/menu_quitter" />
 </menu>

@@ -49,7 +49,7 @@ public class DataBaseContent extends ContentProvider {
 	private SQLiteDatabase EasyTimeDB; // Base de données de l'application
 	private DatabaseHelper EasyTimeDBHelper; // Objet gestion de la base
 	
-	private static final String AUTHORITY = "fr.EasyTime.database"; // URI d'interrogation de l'application
+	private static final String AUTHORITY = "fr.easytime.database"; // URI d'interrogation de l'application
 	private static final String BASE_PATH = "easytime"; 
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
 	      + "/" + BASE_PATH); //  URI d'interrogation de l'application
@@ -76,8 +76,8 @@ public class DataBaseContent extends ContentProvider {
 	 */ 
 	/***************************************************************************/
 
-	public DataBaseContent(Context c) {
-		EasyTimeDBContext = c;
+	public DataBaseContent() {
+		
 	}//DataBaseContent
 	
 	/***************************************************************************/
@@ -90,7 +90,8 @@ public class DataBaseContent extends ContentProvider {
 	 */ 
 	/***************************************************************************/
 
-	public DataBaseContent open() throws SQLException {
+	public DataBaseContent open(Context c) throws SQLException {
+		EasyTimeDBContext = c;
 		EasyTimeDBHelper = new DatabaseHelper(EasyTimeDBContext);
 		EasyTimeDB = EasyTimeDBHelper.getWritableDatabase();
 		return this;

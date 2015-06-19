@@ -25,8 +25,16 @@
             <activity
             android:name=".CreationCompte"
             android:label="@string/title_Connect_Activity" />
-        
-        
+              <activity
+            android:name=".AddTask"
+            android:label="@string/title_add_Activity" />      
+       <provider
+             android:authorities="fr.easytime"
+             android:name=".database.DataBaseContent" >
+       </provider>
+              
+              
+              
     </application>
 
 </manifest>
